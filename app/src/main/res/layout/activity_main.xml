@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ECECEC"
+    tools:context=".ui.main.MainActivity">
+
+    <fragment
+        android:id="@+id/nav_host_fragment_activity_home"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        android:layout_weight="1"
+        app:navGraph="@navigation/mobile_navigation" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/menu"
+        app:labelVisibilityMode="labeled"
+        app:itemIconTint="@color/bottomnav_item_color"
+        app:itemTextColor="@color/bottomnav_item_color"
+        android:layout_gravity="bottom"
+        android:background="@drawable/bottom_nav_shape" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/navigation_explore">
+
+    <fragment
+        android:id="@+id/navigation_explore"
+        android:name="com.c23pr591.adventour.ui.main.explore.ExploreFragment"
+        android:label="fragment_explore"
+        tools:layout="@layout/fragment_explore" />
+    <fragment
+        android:id="@+id/navigation_setting"
+        android:name="com.c23pr591.adventour.ui.main.setting.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/navigation_whistlist"
+        android:name="com.c23pr591.adventour.ui.main.whistlist.WhistlistFragment"
+        android:label="fragment_whistlist"
+        tools:layout="@layout/fragment_whistlist" />
+
+</navigation>

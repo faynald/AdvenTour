@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="24dp"
+    android:background="#FAFAFA"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="24dp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:paddingBottom="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/image_profile"
+                    android:layout_width="124dp"
+                    android:layout_height="124dp"
+                    android:layout_marginTop="14dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:src="@tools:sample/avatars"
+                    app:shapeAppearanceOverlay="@style/circularImageView" />
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/ic_check"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="6dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:textSize="20sp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Maher" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    tools:src="@drawable/male" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_marginStart="12dp"
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:layout_marginStart="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Bekasi" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_marginStart="12dp"
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:layout_marginStart="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    tools:text="19 \nTahun" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_marginStart="12dp"
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:layout_marginStart="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    tools:text="10 \nTrek" />
+
+            </LinearLayout>
+
+            <!-- UBAH PROFIL -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:layout_marginTop="24dp"
+                android:gravity="center_vertical"
+                android:paddingStart="30dp"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_user" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:paddingStart="17dp"
+                    android:text="Ubah Profil"
+
+            </LinearLayout>
+
+            <!-- PIN SAYA -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:gravity="center_vertical"
+                android:paddingStart="30dp"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_my_pin" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:paddingStart="17dp"
+                    android:text="Pin Saya"
+
+            </LinearLayout>
+
+            <!-- PIN SAYA -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:gravity="center_vertical"
+                android:paddingStart="30dp"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_award" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:paddingStart="17dp"
+                    android:text="Hadiah Saya"
+
+            </LinearLayout>
+
+            <!-- PUSAT BANTUAN -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:gravity="center_vertical"
+                android:paddingStart="30dp"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_sidebar" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:paddingStart="17dp"
+                    android:text="Pusat Bantuan"
+
+            </LinearLayout>
+
+            <!-- KELUAR -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:gravity="center_vertical"
+                android:paddingStart="30dp"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_log_out" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:paddingStart="17dp"
+                    android:text="Keluar Akun"
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</ScrollView>
