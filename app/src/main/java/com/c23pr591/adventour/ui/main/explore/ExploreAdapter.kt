@@ -33,7 +33,8 @@ class ExploreAdapter : ListAdapter<Gunung, ExploreAdapter.ItemViewholder>(DiffCa
                 .into(itemImg)
             itemLocation.text = item.lokasi
             itemName.text = item.nama
-            itemRating.rating = 4.5F
+            itemRating.rating = item.rating?.toFloat() ?: 0F
+            itemTvRating.text = item.rating.toString()
 
             root.setOnClickListener {
                 // TODO: Handle on click

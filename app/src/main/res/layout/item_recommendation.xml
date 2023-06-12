@@ -64,15 +64,31 @@
             android:fontFamily="@font/poppins_semibold"
             android:textSize="14sp" />
 
-        <androidx.appcompat.widget.AppCompatRatingBar
-            android:id="@+id/item_rating"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:numStars="5"
-            android:rating="4"
-            android:layout_marginTop="10dp"
-            android:maxHeight="16dp"
-            style="?android:attr/ratingBarStyleSmall" />
+            android:layout_height="32dp"
+            android:layout_marginTop="4dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                android:id="@+id/item_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="16dp"
+                android:numStars="5"
+                style="@style/Widget.MaterialRatingBar.RatingBar" />
+
+            <TextView
+                android:id="@+id/item_tv_rating"
+                tools:text="4.0"
+                android:layout_gravity="center"
+                android:layout_marginStart="4dp"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_width="wrap_content"
+                android:layout_height="16dp" />
+
+        </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_detail"
