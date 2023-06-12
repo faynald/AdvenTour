@@ -1,10 +1,7 @@
 package com.c23pr591.adventour.core.data.network.request
 
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
 
-@Parcelize
 data class SignupRequest(
     @field:SerializedName("nama")
     val name: String,
@@ -29,4 +26,4 @@ data class SignupRequest(
 
     @field:SerializedName("confirmPassword")
     val confirmPassword: String
-) : Parcelable
+)
