@@ -6,4 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface RepositoryUseCase {
     fun getGunungList(): Flow<Resource<List<Gunung>>>
+    fun getGunungJawaBaratList(): Flow<Resource<List<Gunung>>>
+    fun getGunungJawaTengahList(): Flow<Resource<List<Gunung>>>
+    fun getGunungTimurList(): Flow<Resource<List<Gunung>>>
 }

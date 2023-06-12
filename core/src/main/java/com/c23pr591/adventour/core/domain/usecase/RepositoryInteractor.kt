@@ -8,5 +8,10 @@ import javax.inject.Inject
 
 class RepositoryInteractor @Inject constructor(private val repository: IAppRepository): RepositoryUseCase {
     override fun getGunungList() = repository.getGunungList()
+    override fun getGunungJawaBaratList() = repository.getGunungJawaBaratList()
+
+    override fun getGunungJawaTengahList() = repository.getGunungJawaTengahList()
+
+    override fun getGunungTimurList() = repository.getGunungJawaTimurList()
 
 }

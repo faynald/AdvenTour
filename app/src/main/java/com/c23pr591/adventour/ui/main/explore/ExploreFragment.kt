@@ -30,26 +30,81 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
 
         if (activity != null) {
             setupRecyclerView()
+            setupObserver()
+        }
+    }
 
-            viewModel.getAllGunung().observe(viewLifecycleOwner) { gunung ->
-                if (gunung != null) {
-                    when (gunung) {
-                        is Resource.Loading -> {
-                            Log.e("ExploreFragment", "getAllGunung() Loading . . .")
-                        }
-                        is Resource.Success -> {
-                            recommendationListAdapter.submitList(gunung.data)
-                            popularListAdapter.submitList(gunung.data)
-                        }
-                        is Resource.Error -> {
-                            Log.e("ExploreFragment", "getAllGunung() Error")
-                            Log.e("ExploreFragment", "getAllGunung() Error")
-                            Log.e("ExploreFragment", "getAllGunung() Error")
-                        }
+    private fun setupObserver() {
+
+        // gunung
+        viewModel.getAllGunung().observe(viewLifecycleOwner) { gunung ->
+            if (gunung != null) {
+                when (gunung) {
+                    is Resource.Loading -> {
+                        Log.e("ExploreFragment", "getAllGunung() Loading . . .")
+                    }
+                    is Resource.Success -> {
+                        recommendationListAdapter.submitList(gunung.data)
+                        popularListAdapter.submitList(gunung.data)
+                    }
+                    is Resource.Error -> {
+                        Log.e("ExploreFragment", "getAllGunung() Error")
                     }
                 }
             }
         }
+
+        // jawa barat
+        viewModel.getAllGunungJawaBarat().observe(viewLifecycleOwner) { gunung ->
+            if (gunung != null) {
+                when (gunung) {
+                    is Resource.Loading -> {
+                        Log.e("ExploreFragment", "getAllGunung() Loading . . .")
+                    }
+                    is Resource.Success -> {
+                        jawaBaratListAdapter.submitList(gunung.data)
+                    }
+                    is Resource.Error -> {
+                        Log.e("ExploreFragment", "getAllGunung() Error")
+                    }
+                }
+            }
+        }
+
+        // jawa tengah
+        viewModel.getAllGunungJawaTengah().observe(viewLifecycleOwner) { gunung ->
+            if (gunung != null) {
+                when (gunung) {
+                    is Resource.Loading -> {
+                        Log.e("ExploreFragment", "getAllGunung() Loading . . .")
+                    }
+                    is Resource.Success -> {
+                        jawaTengahListAdapter.submitList(gunung.data)
+                    }
+                    is Resource.Error -> {
+                        Log.e("ExploreFragment", "getAllGunung() Error")
+                    }
+                }
+            }
+        }
+
+        // jawa timur
+        viewModel.getAllGunungJawaTimur().observe(viewLifecycleOwner) { gunung ->
+            if (gunung != null) {
+                when (gunung) {
+                    is Resource.Loading -> {
+                        Log.e("ExploreFragment", "getAllGunung() Loading . . .")
+                    }
+                    is Resource.Success -> {
+                        jawaTimurListAdapter.submitList(gunung.data)
+                    }
+                    is Resource.Error -> {
+                        Log.e("ExploreFragment", "getAllGunung() Error")
+                    }
+                }
+            }
+        }
+
     }
 
     private fun setupRecyclerView() {
@@ -75,26 +130,24 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
         with(binding.rvJawaBarat) {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             setHasFixedSize(true)
-            adapter = popularListAdapter
+            adapter = jawaBaratListAdapter
         }
-        jawaBaratListAdapter.submitList(DataDummy.generateGunungList())
 
         // jawa tengah list
         jawaTengahListAdapter = ExploreAdapter()
         with(binding.rvJawaTengah) {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             setHasFixedSize(true)
-            adapter = popularListAdapter
+            adapter = jawaTengahListAdapter
         }
-        jawaTengahListAdapter.submitList(DataDummy.generateGunungList())
 
         // jawa timur list
         jawaTimurListAdapter = ExploreAdapter()
         with(binding.rvJawaTimur) {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             setHasFixedSize(true)
-            adapter = popularListAdapter
+            adapter = jawaTimurListAdapter
+
         }
-        jawaTimurListAdapter.submitList(DataDummy.generateGunungList())
     }
 }

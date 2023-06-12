@@ -8,5 +8,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ExploreViewModel @Inject constructor(private val repository: AppRepository) : ViewModel() {
+
     fun getAllGunung() = repository.getGunungList().asLiveData()
+
+    fun getAllGunungJawaBarat() = repository.getGunungJawaBaratList().asLiveData()
+
+    fun getAllGunungJawaTengah() = repository.getGunungJawaTengahList().asLiveData()
+
+    fun getAllGunungJawaTimur() = repository.getGunungJawaTimurList().asLiveData()
 }
