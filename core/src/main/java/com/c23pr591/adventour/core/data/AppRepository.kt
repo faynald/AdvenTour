@@ -51,7 +51,7 @@ class AppRepository @Inject constructor(
                 }
 
             override suspend fun createCall(): Flow<ApiResponse<List<GunungListResponse>>> =
-                networkDataSource.getGunungList()
+                networkDataSource.getGunungJawaBaratList()
 
             override suspend fun saveCallResult(data: List<GunungListResponse>) {
                 val gunungList = GunungJawaBaratMapper.mapResponsesToEntities(data)
@@ -73,7 +73,7 @@ class AppRepository @Inject constructor(
                 }
 
             override suspend fun createCall(): Flow<ApiResponse<List<GunungListResponse>>> =
-                networkDataSource.getGunungList()
+                networkDataSource.getGunungJawaTengahList()
 
             override suspend fun saveCallResult(data: List<GunungListResponse>) {
                 val gunungList = GunungJawaTengahMapper.mapResponsesToEntities(data)
@@ -95,7 +95,7 @@ class AppRepository @Inject constructor(
                 }
 
             override suspend fun createCall(): Flow<ApiResponse<List<GunungListResponse>>> =
-                networkDataSource.getGunungList()
+                networkDataSource.getGunungJawaTimurList()
 
             override suspend fun saveCallResult(data: List<GunungListResponse>) {
                 val gunungList = GunungJawaTimurMapper.mapResponsesToEntities(data)

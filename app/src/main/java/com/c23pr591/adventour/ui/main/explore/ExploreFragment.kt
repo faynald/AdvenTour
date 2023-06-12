@@ -59,13 +59,13 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
             if (gunung != null) {
                 when (gunung) {
                     is Resource.Loading -> {
-                        Log.e("ExploreFragment", "getAllGunung() Loading . . .")
+                        Log.e("ExploreFragment", "getAllGunungJawaBarat() Loading . . .")
                     }
                     is Resource.Success -> {
                         jawaBaratListAdapter.submitList(gunung.data)
                     }
                     is Resource.Error -> {
-                        Log.e("ExploreFragment", "getAllGunung() Error")
+                        Log.e("ExploreFragment", "getAllGunungJawaBarat() Error")
                     }
                 }
             }
@@ -76,13 +76,13 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
             if (gunung != null) {
                 when (gunung) {
                     is Resource.Loading -> {
-                        Log.e("ExploreFragment", "getAllGunung() Loading . . .")
+                        Log.e("ExploreFragment", "getAllGunungJawaTengah() Loading . . .")
                     }
                     is Resource.Success -> {
                         jawaTengahListAdapter.submitList(gunung.data)
                     }
                     is Resource.Error -> {
-                        Log.e("ExploreFragment", "getAllGunung() Error")
+                        Log.e("ExploreFragment", "getAllGunungJawaTengah() Error")
                     }
                 }
             }
@@ -93,13 +93,13 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
             if (gunung != null) {
                 when (gunung) {
                     is Resource.Loading -> {
-                        Log.e("ExploreFragment", "getAllGunung() Loading . . .")
+                        Log.e("ExploreFragment", "getAllGunungJawaTimur() Loading . . .")
                     }
                     is Resource.Success -> {
                         jawaTimurListAdapter.submitList(gunung.data)
                     }
                     is Resource.Error -> {
-                        Log.e("ExploreFragment", "getAllGunung() Error")
+                        Log.e("ExploreFragment", "getAllGunungJawaTimur() Error")
                     }
                 }
             }
