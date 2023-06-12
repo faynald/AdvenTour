@@ -5,7 +5,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface ApiService {
-    @GET("/")
+    @GET("gunung")
     suspend fun getGunungList(): GunungResponse
 
     @GET("{id}")

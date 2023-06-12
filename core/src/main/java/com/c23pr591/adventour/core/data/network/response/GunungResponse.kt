@@ -15,32 +15,38 @@ data class GunungListResponse(
     val id: Int,
 
     @field:SerializedName("daerah")
-    val daerah: String,
+    val daerah: String?,
 
     @field:SerializedName("nama")
-    val nama: String,
+    val nama: String?,
 
     @field:SerializedName("ketinggian")
-    val ketinggian: Int,
+    val ketinggian: Int?,
 
     @field:SerializedName("lokasi")
-    val lokasi: String,
+    val lokasi: String?,
 
     @field:SerializedName("trek")
-    val trek: String,
+    val trek: String?,
 
     @field:SerializedName("jalur")
-    val jalur: String,
+    val jalur: String?,
 
     @field:SerializedName("simaksi")
-    val simaksi: Int,
+    val simaksi: Int?,
 
     @field:SerializedName("level")
-    val level: Int,
+    val level: Int?,
+
+    @field:SerializedName("rating")
+    val rating: Double?,
+
+    @field:SerializedName("imageUrl")
+    val imageUrl: String?,
 
     @field:SerializedName("createdAt")
-    val createdAt: String,
+    val createdAt: String?,
 
     @field:SerializedName("updateAt")
-    val updatedAt: String
+    val updatedAt: String?
 )

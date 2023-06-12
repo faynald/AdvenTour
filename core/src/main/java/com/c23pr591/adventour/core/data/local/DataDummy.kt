@@ -19,6 +19,8 @@ object DataDummy {
                     jalur = "Jalur Apuy, Linggarjati dan Jalur Palutungan",
                     simaksi = 30000,
                     level = 1,
+                    rating = 3.1,
+                    imageUrl = "https://storage.googleapis.com/adventour-storage/img-gunung/ciremai.jpg",
                     createdAt = "2023-06-09T15:51:54.000Z",
                     updatedAt = "2023-06-09T15:51:54.000Z"
                 ),
@@ -32,6 +34,8 @@ object DataDummy {
                     jalur = "Jalur Apuy, Linggarjati dan Jalur Palutungan",
                     simaksi = 30000,
                     level = 1,
+                    rating = 3.1,
+                    imageUrl = "https://storage.googleapis.com/adventour-storage/img-gunung/ciremai.jpg",
                     createdAt = "2023-06-09T15:51:54.000Z",
                     updatedAt = "2023-06-09T15:51:54.000Z"
                 ),
@@ -45,6 +49,8 @@ object DataDummy {
                     jalur = "Jalur Apuy, Linggarjati dan Jalur Palutungan",
                     simaksi = 30000,
                     level = 1,
+                    rating = 3.1,
+                    imageUrl = "https://storage.googleapis.com/adventour-storage/img-gunung/ciremai.jpg",
                     createdAt = "2023-06-09T15:51:54.000Z",
                     updatedAt = "2023-06-09T15:51:54.000Z"
                 ),
@@ -58,6 +64,8 @@ object DataDummy {
                     jalur = "Jalur Apuy, Linggarjati dan Jalur Palutungan",
                     simaksi = 30000,
                     level = 1,
+                    rating = 3.1,
+                    imageUrl = "https://storage.googleapis.com/adventour-storage/img-gunung/ciremai.jpg",
                     createdAt = "2023-06-09T15:51:54.000Z",
                     updatedAt = "2023-06-09T15:51:54.000Z"
                 ),
@@ -71,6 +79,8 @@ object DataDummy {
                     jalur = "Jalur Apuy, Linggarjati dan Jalur Palutungan",
                     simaksi = 30000,
                     level = 1,
+                    rating = 3.1,
+                    imageUrl = "https://storage.googleapis.com/adventour-storage/img-gunung/ciremai.jpg",
                     createdAt = "2023-06-09T15:51:54.000Z",
                     updatedAt = "2023-06-09T15:51:54.000Z"
                 ),
@@ -84,6 +94,8 @@ object DataDummy {
                     jalur = "Jalur Apuy, Linggarjati dan Jalur Palutungan",
                     simaksi = 30000,
                     level = 1,
+                    rating = 3.1,
+                    imageUrl = "https://storage.googleapis.com/adventour-storage/img-gunung/ciremai.jpg",
                     createdAt = "2023-06-09T15:51:54.000Z",
                     updatedAt = "2023-06-09T15:51:54.000Z"
                 ),
@@ -97,6 +109,8 @@ object DataDummy {
                     jalur = "Jalur Apuy, Linggarjati dan Jalur Palutungan",
                     simaksi = 30000,
                     level = 1,
+                    rating = 3.1,
+                    imageUrl = "https://storage.googleapis.com/adventour-storage/img-gunung/ciremai.jpg",
                     createdAt = "2023-06-09T15:51:54.000Z",
                     updatedAt = "2023-06-09T15:51:54.000Z"
                 ),
@@ -105,4 +119,6 @@ object DataDummy {
 
         return myArray
     }
+
+//    fun generateUser():
 }

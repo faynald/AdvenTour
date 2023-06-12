@@ -8,7 +8,9 @@ import android.view.animation.AnimationUtils
 import com.c23pr591.adventour.R
 import com.c23pr591.adventour.databinding.ActivitySplashBinding
 import com.c23pr591.adventour.ui.auth.AuthActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySplashBinding

@@ -18,6 +18,8 @@ object GunungMapper {
                 jalur = it.jalur,
                 simaksi = it.simaksi,
                 level = it.level,
+                rating = it.rating,
+                imageUrl = it.imageUrl,
                 createdAt = it.createdAt,
                 updatedAt = it.updatedAt,
             )
@@ -38,6 +40,8 @@ object GunungMapper {
                 jalur = it.jalur,
                 simaksi = it.simaksi,
                 level = it.level,
+                rating = it.rating,
+                imageUrl = it.imageUrl,
                 createdAt = it.createdAt,
                 updatedAt = it.updatedAt,
             )
