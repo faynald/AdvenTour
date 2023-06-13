@@ -1,5 +1,6 @@
 package com.c23pr591.adventour.core.data.local
 
+import com.c23pr591.adventour.core.data.local.entity.FeedbackItemEntity
 import com.c23pr591.adventour.core.data.local.entity.GunungEntity
 import com.c23pr591.adventour.core.data.local.entity.GunungJawaBaratEntity
 import com.c23pr591.adventour.core.data.local.entity.GunungJawaTengahEntity
@@ -26,4 +27,8 @@ class LocalDataSource @Inject constructor(private val dao: AppDao) {
     fun getAllGunungJawaTimur(): Flow<List<GunungJawaTimurEntity>> = dao.getAllGunungJawaTimur()
 
     suspend fun insertGunungJawaTimur(gunung: List<GunungJawaTimurEntity>) = dao.insertGunungJawaTimur(gunung)
+
+    fun getFeedback(gunungId: Int) = dao.getFeedbackByGunung(gunungId)
+
+    suspend fun insertFeedback(feedback: List<FeedbackItemEntity>) = dao.insertFeedback(feedback)
 }

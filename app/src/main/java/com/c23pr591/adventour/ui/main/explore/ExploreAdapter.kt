@@ -1,5 +1,6 @@
 package com.c23pr591.adventour.ui.main.explore
 
+import android.content.Intent
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.c23pr591.adventour.core.domain.model.Gunung
 import com.c23pr591.adventour.databinding.ItemRecommendationBinding
+import com.c23pr591.adventour.ui.detail.DetailActivity
 
 class ExploreAdapter : ListAdapter<Gunung, ExploreAdapter.ItemViewholder>(DiffCallback()) {
 
@@ -37,7 +39,9 @@ class ExploreAdapter : ListAdapter<Gunung, ExploreAdapter.ItemViewholder>(DiffCa
             itemTvRating.text = item.rating.toString()
 
             root.setOnClickListener {
-                // TODO: Handle on click
+                val intent = Intent(itemView.context, DetailActivity::class.java)
+                intent.putExtra("EXTRA_GUNUNG", item)
+                itemView.context.startActivity(intent)
             }
         }
     }

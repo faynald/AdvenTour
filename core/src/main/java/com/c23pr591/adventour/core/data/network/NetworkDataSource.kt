@@ -1,6 +1,7 @@
 package com.c23pr591.adventour.core.data.network
 
 import android.util.Log
+import com.c23pr591.adventour.core.data.network.response.FeedbackItemResponse
 import com.c23pr591.adventour.core.data.network.response.GunungListResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -73,6 +74,25 @@ class NetworkDataSource @Inject constructor(private val apiService: ApiService) 
                     emit(ApiResponse.Success(response.data))
                 } else {
                     emit(ApiResponse.Empty)
+                }
+            } catch (e: Exception) {
+                emit(ApiResponse.Error(e.toString()))
+                Log.e("RemoteDataSource getGunungJawaTimurList", e.toString())
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun getFeedbackById(gunungId: Int): Flow<ApiResponse<List<FeedbackItemResponse?>?>> {
+        return flow {
+            try {
+                val response = apiService.getFeedbackById(gunungId)
+                val data = response.data
+                if (data != null) {
+                    if (data.isNotEmpty()) {
+                        emit(ApiResponse.Success(response.data))
+                    } else {
+                        emit(ApiResponse.Empty)
+                    }
                 }
             } catch (e: Exception) {
                 emit(ApiResponse.Error(e.toString()))
