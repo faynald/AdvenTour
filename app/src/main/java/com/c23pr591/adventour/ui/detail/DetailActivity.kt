@@ -1,10 +1,12 @@
 package com.c23pr591.adventour.ui.detail
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import com.bumptech.glide.Glide
+import com.c23pr591.adventour.R
 import com.c23pr591.adventour.core.data.Resource
 import com.c23pr591.adventour.core.domain.model.Gunung
 import com.c23pr591.adventour.databinding.ActivityDetailBinding
@@ -24,7 +26,13 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val gunung = intent.getParcelableExtra<Gunung>("EXTRA_GUNUNG")
+        val gunung = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            intent.getParcelableExtra("EXTRA_GUNUNG", Gunung::class.java)
+        } else {
+            intent.getParcelableExtra("EXTRA_GUNUNG")
+        }
+
+        setupOnClick()
 
         if (gunung != null) {
             setupData(gunung)
@@ -64,7 +72,13 @@ class DetailActivity : AppCompatActivity() {
             tvDetailTrek.text = gunung.trek
             tvDetailJalur.text = gunung.jalur
             tvDetailBiaya.text = gunung.simaksi.toString()
-
+            var statusFavorite = gunung.isFavorite == true
+            setStatusFavorite(statusFavorite)
+            buttonWhistlist.setOnClickListener {
+                statusFavorite = !statusFavorite
+                viewModel.setFavorite(gunung.id, statusFavorite)
+                setStatusFavorite(statusFavorite)
+            }
         }
     }
 
@@ -74,6 +88,25 @@ class DetailActivity : AppCompatActivity() {
         with(binding.recyclerView) {
             setHasFixedSize(true)
             adapter = reviewAdapter
+        }
+    }
+
+    private fun setupOnClick() {
+        binding.buttonBack.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
+    }
+
+    private fun setStatusFavorite(statusFavorite: Boolean) {
+        if (statusFavorite) {
+            Glide.with(this@DetailActivity)
+                .load(R.drawable.ic_favorite)
+                .into(binding.imgWhistlist)
+        } else {
+            Glide.with(this@DetailActivity)
+                .load(R.drawable.ic_favorite_border)
+                .into(binding.imgWhistlist)
         }
     }
 }

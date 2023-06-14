@@ -11,7 +11,9 @@ import com.c23pr591.adventour.R
 import com.c23pr591.adventour.databinding.FragmentLoginBinding
 import com.c23pr591.adventour.ui.auth.signup.SignUpFragment
 import com.c23pr591.adventour.ui.main.MainActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private val binding: FragmentLoginBinding by viewBinding()

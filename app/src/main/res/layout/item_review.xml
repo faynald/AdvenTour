@@ -50,6 +50,8 @@
             android:layout_width="104dp"
             android:layout_height="24dp"
             android:numStars="5"
+            app:mrb_fillBackgroundStars="true"
+            android:progressTint="#FFC700"
             style="@style/Widget.MaterialRatingBar.RatingBar" />
 
         <LinearLayout
@@ -65,7 +67,7 @@
                 android:textColor="#7D8797"
                 android:fontFamily="@font/nunito_regular"
                 android:textSize="12sp"
-                tools:text="rate : "/>
+                android:text="rate : "/>
 
             <TextView
                 android:id="@+id/item_tv_rating"

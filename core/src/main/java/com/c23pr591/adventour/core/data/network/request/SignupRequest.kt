@@ -25,5 +25,5 @@ data class SignupRequest(
     val password: String,
 
     @field:SerializedName("confirmPassword")
-    val confirmPassword: String
+    val confirmPassword: String,
 )

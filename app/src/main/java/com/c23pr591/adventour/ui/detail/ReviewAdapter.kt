@@ -39,6 +39,7 @@ class ReviewAdapter : ListAdapter<FeedbackItem, ReviewAdapter.ItemViewholder>(Di
             itemTvRating.text = item.rating.toString()
             itemRatingBar.rating = item.rating?.toFloat() ?: 0F
             itemTvReview.text = item.review
+            itemTvUserLocation.text = item.user?.domisili
 
             root.setOnClickListener {
                 // TODO: Handle on click

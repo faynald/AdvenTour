@@ -5,7 +5,9 @@ import android.os.Bundle
 import com.c23pr591.adventour.R
 import com.c23pr591.adventour.databinding.ActivityAuthBinding
 import com.c23pr591.adventour.ui.auth.login.LoginFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AuthActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAuthBinding

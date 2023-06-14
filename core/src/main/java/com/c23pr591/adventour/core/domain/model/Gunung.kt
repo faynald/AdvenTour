@@ -18,5 +18,6 @@ data class Gunung(
     val rating: Double?,
     val imageUrl: String?,
     val createdAt: String?,
-    val updatedAt: String?
+    val updatedAt: String?,
+    val isFavorite: Boolean? = false
 ) : Parcelable

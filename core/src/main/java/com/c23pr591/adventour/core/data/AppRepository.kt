@@ -3,6 +3,7 @@ package com.c23pr591.adventour.core.data
 import com.c23pr591.adventour.core.data.local.LocalDataSource
 import com.c23pr591.adventour.core.data.network.ApiResponse
 import com.c23pr591.adventour.core.data.network.NetworkDataSource
+import com.c23pr591.adventour.core.data.network.request.SignupRequest
 import com.c23pr591.adventour.core.data.network.response.FeedbackItemResponse
 import com.c23pr591.adventour.core.data.network.response.GunungListResponse
 import com.c23pr591.adventour.core.domain.model.FeedbackItem
@@ -22,7 +23,7 @@ import javax.inject.Singleton
 class AppRepository @Inject constructor(
     private val networkDataSource: NetworkDataSource,
     private val localDataSource: LocalDataSource,
-//    private val appExecutors: AppExecutors
+    private val appExecutors: AppExecutors
 ) : IAppRepository{
     override fun getGunungList(): Flow<Resource<List<Gunung>>> =
         object : NetworkBoundResource<List<Gunung>, List<GunungListResponse>>() {
@@ -134,4 +135,18 @@ class AppRepository @Inject constructor(
             }
 
         }.asFlow()
+
+    override fun getAllFavorite(): Flow<List<Gunung>> =
+        localDataSource.getAllFavorite().map {
+            GunungMapper.mapEntitiesToDomain(it)
+        }
+
+    override fun setFavorite(gunungId: Int, newState: Boolean) {
+        appExecutors.diskIO().execute { localDataSource.updateFavorite(gunungId, newState) }
+    }
+
+    fun signUpUser(user: SignupRequest) {
+        networkDataSource.signUp(user)
+    }
+
 }

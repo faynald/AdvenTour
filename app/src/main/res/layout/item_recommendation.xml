@@ -76,6 +76,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="16dp"
                 android:numStars="5"
+                app:mrb_fillBackgroundStars="true"
+                android:progressTint="#FFC700"
                 style="@style/Widget.MaterialRatingBar.RatingBar" />
 
             <TextView

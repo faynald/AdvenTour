@@ -31,4 +31,8 @@ class LocalDataSource @Inject constructor(private val dao: AppDao) {
     fun getFeedback(gunungId: Int) = dao.getFeedbackByGunung(gunungId)
 
     suspend fun insertFeedback(feedback: List<FeedbackItemEntity>) = dao.insertFeedback(feedback)
+    
+    fun getAllFavorite() = dao.getAllFavorite()
+    
+    fun updateFavorite(gunungId: Int, newState: Boolean) = dao.updateFavorite(gunungId, newState)
 }

@@ -44,6 +44,7 @@ object GunungMapper {
                 imageUrl = it.imageUrl,
                 createdAt = it.createdAt,
                 updatedAt = it.updatedAt,
+                isFavorite = it.isFavorite
             )
         }
 

@@ -42,5 +42,12 @@ interface AppDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFeedback(feedback: List<FeedbackItemEntity>)
 
+    // set favorite
+    @Query("SELECT * FROM gunung_entity WHERE is_favorite = 1")
+    fun getAllFavorite(): Flow<List<GunungEntity>>
+
+    @Query("UPDATE gunung_entity SET is_favorite = :newState WHERE id = :gunungId")
+    fun updateFavorite(gunungId: Int, newState: Boolean)
+
 
 }

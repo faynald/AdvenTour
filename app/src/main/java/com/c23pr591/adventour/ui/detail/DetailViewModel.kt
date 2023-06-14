@@ -10,4 +10,6 @@ import javax.inject.Inject
 class DetailViewModel @Inject constructor(private val repository: AppRepository) : ViewModel() {
 
     fun getFeedbackById(gunungId: Int) = repository.getFeedbackById(gunungId).asLiveData()
+
+    fun setFavorite(gunungId: Int, newState: Boolean) = repository.setFavorite(gunungId, newState)
 }

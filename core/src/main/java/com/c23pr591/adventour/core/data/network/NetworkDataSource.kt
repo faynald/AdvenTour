@@ -1,12 +1,17 @@
 package com.c23pr591.adventour.core.data.network
 
 import android.util.Log
+import com.c23pr591.adventour.core.data.network.request.SignupRequest
 import com.c23pr591.adventour.core.data.network.response.FeedbackItemResponse
 import com.c23pr591.adventour.core.data.network.response.GunungListResponse
+import com.c23pr591.adventour.core.data.network.response.SignUpResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.lang.Exception
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -100,4 +105,22 @@ class NetworkDataSource @Inject constructor(private val apiService: ApiService) 
             }
         }.flowOn(Dispatchers.IO)
     }
+
+    fun signUp(user: SignupRequest) {
+        val call: Call<SignUpResponse> = apiService.signUp(user)
+        call.enqueue(object : Callback<SignUpResponse> {
+            override fun onResponse(
+                call: Call<SignUpResponse>,
+                response: Response<SignUpResponse>
+            ) {
+                Log.e("RemoteDataSource signUp Success", response.code().toString())
+            }
+
+            override fun onFailure(call: Call<SignUpResponse>, t: Throwable) {
+                Log.e("RemoteDataSource signUp", "Error$t")
+            }
+        })
+        apiService.signUp(user)
+    }
+
 }

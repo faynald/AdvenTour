@@ -1,7 +1,11 @@
 package com.c23pr591.adventour.core.data.network
 
+import com.c23pr591.adventour.core.data.network.request.SignupRequest
 import com.c23pr591.adventour.core.data.network.response.FeedbackResponse
 import com.c23pr591.adventour.core.data.network.response.GunungResponse
+import com.c23pr591.adventour.core.data.network.response.SignUpResponse
+import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
@@ -24,5 +28,8 @@ interface ApiService {
 
     @GET("{id}")
     suspend fun getGunungById(@Path("id") id: Int): GunungResponse
+
+    @POST("auth/signup")
+    fun signUp(@Body user: SignupRequest): Call<SignUpResponse>
 
 }

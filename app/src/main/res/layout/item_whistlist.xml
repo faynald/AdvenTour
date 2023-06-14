@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="12dp"
+    android:layout_marginBottom="30dp"
+    android:layout_width="match_parent"
+    android:layout_height="155dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="5"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/img_gunung"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            tools:src="@tools:sample/avatars"
+            android:scaleType="centerCrop"
+            android:layout_weight="2" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginStart="20dp"
+            android:layout_weight="3" >
+
+            <TextView
+                android:id="@+id/tv_gunung_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:fontFamily="@font/poppins_semibold"
+                android:textSize="14sp"
+                tools:text="Gunung Semeru" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_location" />
+
+                <TextView
+                    android:id="@+id/tv_lokasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/poppins_regular"
+                    tools:text="Malang" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginTop="4dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                    android:id="@+id/item_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="16dp"
+                    android:numStars="5"
+                    app:mrb_fillBackgroundStars="true"
+                    android:progressTint="#FFC700"
+                    style="@style/Widget.MaterialRatingBar.RatingBar" />
+
+                <TextView
+                    android:id="@+id/item_tv_rating"
+                    tools:text="4.0"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="4dp"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="16dp" />
+
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_detail"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="24dp"
+                app:backgroundTint="#ECD400"
+                android:fontFamily="@font/poppins_medium"
+                app:cornerRadius="4dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:text="Details" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -11,4 +11,8 @@ interface RepositoryUseCase {
     fun getGunungJawaTengahList(): Flow<Resource<List<Gunung>>>
     fun getGunungTimurList(): Flow<Resource<List<Gunung>>>
     fun getFeedbackById(gunungId: Int): Flow<Resource<List<FeedbackItem>>>
+
+    fun getAllFavorite(): Flow<List<Gunung>>
+
+    fun setFavorite(gunungId: Int, state: Boolean)
 }

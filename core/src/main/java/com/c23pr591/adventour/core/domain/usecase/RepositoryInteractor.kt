@@ -16,5 +16,8 @@ class RepositoryInteractor @Inject constructor(private val repository: IAppRepos
     override fun getGunungTimurList() = repository.getGunungJawaTimurList()
 
     override fun getFeedbackById(gunungId: Int) = repository.getFeedbackById(gunungId)
+    override fun getAllFavorite() = repository.getAllFavorite()
+
+    override fun setFavorite(gunungId: Int, newState: Boolean) = repository.setFavorite(gunungId, newState)
 
 }

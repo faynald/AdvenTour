@@ -1,21 +1,22 @@
-package com.c23pr591.adventour.ui.main.explore
+package com.c23pr591.adventour.ui.main.whistlist
 
 import android.content.Intent
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.c23pr591.adventour.core.domain.model.Gunung
-import com.c23pr591.adventour.databinding.ItemRecommendationBinding
+import com.c23pr591.adventour.databinding.ItemWhistlistBinding
 import com.c23pr591.adventour.ui.detail.DetailActivity
 
-class ExploreAdapter : ListAdapter<Gunung, ExploreAdapter.ItemViewholder>(DiffCallback()) {
+class WhistlistAdapter : ListAdapter<Gunung, WhistlistAdapter.ItemViewholder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewholder =
         ItemViewholder(
-            ItemRecommendationBinding.inflate(
+            ItemWhistlistBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -23,20 +24,20 @@ class ExploreAdapter : ListAdapter<Gunung, ExploreAdapter.ItemViewholder>(DiffCa
         )
 
 
-    override fun onBindViewHolder(holder: ExploreAdapter.ItemViewholder, position: Int) {
+    override fun onBindViewHolder(holder: WhistlistAdapter.ItemViewholder, position: Int) {
         holder.bind(getItem(position))
     }
 
-    class ItemViewholder(private val binding: ItemRecommendationBinding) :
+    class ItemViewholder(private val binding: ItemWhistlistBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Gunung) = with(binding) {
-            Glide.with(itemView)
+            Glide.with(itemView.context)
                 .load("https://upload.wikimedia.org/wikipedia/commons/1/12/Semeru.jpg")
-                .into(itemImg)
-            itemLocation.text = item.lokasi
-            itemName.text = item.nama
-            itemRating.rating = item.rating?.toFloat() ?: 0F
+                .into(imgGunung)
+            tvGunungName.text = item.nama
+            tvLokasi.text = item.lokasi
             itemTvRating.text = item.rating.toString()
+            itemRating.rating = item.rating?.toFloat() ?: 0F
 
             buttonDetail.setOnClickListener {
                 val intent = Intent(itemView.context, DetailActivity::class.java)

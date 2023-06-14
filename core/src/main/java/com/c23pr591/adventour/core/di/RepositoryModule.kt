@@ -4,6 +4,7 @@ import com.c23pr591.adventour.core.data.AppRepository
 import com.c23pr591.adventour.core.domain.repository.IAppRepository
 import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
