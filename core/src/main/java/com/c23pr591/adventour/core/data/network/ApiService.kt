@@ -6,6 +6,7 @@ import com.c23pr591.adventour.core.data.network.response.FeedbackResponse
 import com.c23pr591.adventour.core.data.network.response.GunungResponse
 import com.c23pr591.adventour.core.data.network.response.SignUpResponse
 import com.c23pr591.adventour.core.data.network.response.SigninResponse
+import com.c23pr591.adventour.core.data.network.response.UserDataResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -41,4 +42,6 @@ interface ApiService {
     @GET("recommendation")
     suspend fun getRecommendation(@Header("token") token: String): GunungResponse
 
+    @GET("auth/user")
+    suspend fun getUserData(@Header("token") token: String): UserDataResponse
 }

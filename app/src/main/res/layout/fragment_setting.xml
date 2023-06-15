@@ -64,7 +64,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    tools:src="@drawable/male" />
+                    android:src="@drawable/male" />
 
                 <com.google.android.material.divider.MaterialDivider
                     android:layout_marginStart="12dp"
@@ -72,6 +72,7 @@
                     android:layout_height="match_parent" />
 
                 <TextView
+                    android:id="@+id/tv_profile_domisili"
                     android:layout_marginStart="12dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -83,6 +84,7 @@
                     android:layout_height="match_parent" />
 
                 <TextView
+                    android:id="@+id/tv_profile_umur"
                     android:layout_marginStart="12dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -95,6 +97,7 @@
                     android:layout_height="match_parent" />
 
                 <TextView
+                    android:id="@+id/tv_profile_trek"
                     android:layout_marginStart="12dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

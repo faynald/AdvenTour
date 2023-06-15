@@ -10,6 +10,7 @@ import com.c23pr591.adventour.core.data.local.entity.GunungJawaBaratEntity
 import com.c23pr591.adventour.core.data.local.entity.GunungJawaTengahEntity
 import com.c23pr591.adventour.core.data.local.entity.GunungJawaTimurEntity
 import com.c23pr591.adventour.core.data.local.entity.GunungRecommendationEntity
+import com.c23pr591.adventour.core.data.local.entity.UserDataEntity
 import com.c23pr591.adventour.core.data.local.entity.UserLoginEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -53,7 +54,7 @@ interface AppDao {
 
     // Authentication
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertUser(data: List<UserLoginEntity>)
+    suspend fun insertToken(data: List<UserLoginEntity>)
 
     @Query("SELECT * FROM user_login WHERE id = 1")
     fun getToken(): Flow<List<UserLoginEntity>>
@@ -64,6 +65,14 @@ interface AppDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertRecommendation(gunungList: List<GunungRecommendationEntity>)
+
+    // User Data
+    @Query("SELECT * FROM user_data_entity")
+    fun getUserData(): Flow<List<UserDataEntity>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertUserData(user: List<UserDataEntity>)
+
 
 
 }

@@ -1,6 +1,7 @@
 package com.c23pr591.adventour.core.data
 
 import com.c23pr591.adventour.core.data.local.LocalDataSource
+import com.c23pr591.adventour.core.data.local.entity.UserDataEntity
 import com.c23pr591.adventour.core.data.local.entity.UserLoginEntity
 import com.c23pr591.adventour.core.data.network.ApiResponse
 import com.c23pr591.adventour.core.data.network.NetworkDataSource
@@ -10,8 +11,10 @@ import com.c23pr591.adventour.core.data.network.response.FeedbackItemResponse
 import com.c23pr591.adventour.core.data.network.response.GunungListResponse
 import com.c23pr591.adventour.core.data.network.response.SignUpResponse
 import com.c23pr591.adventour.core.data.network.response.SigninResponse
+import com.c23pr591.adventour.core.data.network.response.UserDataResponseItem
 import com.c23pr591.adventour.core.domain.model.FeedbackItem
 import com.c23pr591.adventour.core.domain.model.Gunung
+import com.c23pr591.adventour.core.domain.model.UserData
 import com.c23pr591.adventour.core.domain.repository.IAppRepository
 import com.c23pr591.adventour.core.utils.FeedbackItemMapper
 import com.c23pr591.adventour.core.utils.GunungJawaBaratMapper
@@ -19,6 +22,7 @@ import com.c23pr591.adventour.core.utils.GunungJawaTengahMapper
 import com.c23pr591.adventour.core.utils.GunungJawaTimurMapper
 import com.c23pr591.adventour.core.utils.GunungMapper
 import com.c23pr591.adventour.core.utils.RecommendationMapper
+import com.c23pr591.adventour.core.utils.UserDataMapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
@@ -188,6 +192,26 @@ class AppRepository @Inject constructor(
 //                TODO("if phone has internet connection, fetch from API")
             }
 
+        }.asFlow()
+
+    fun getUserData(token: String): Flow<Resource<List<UserData>>> =
+        object : NetworkBoundResource<List<UserData>, List<UserDataResponseItem>>() {
+            override fun loadFromDB(): Flow<List<UserData>> =
+                localDataSource.getUserData().map {
+                    UserDataMapper.mapEntitiesToDomain(it)
+                }
+
+            override suspend fun createCall(): Flow<ApiResponse<List<UserDataResponseItem>>> =
+                networkDataSource.getUserData(token)
+
+            override suspend fun saveCallResult(data: List<UserDataResponseItem>) {
+                val dataList = UserDataMapper.mapResponsesToEntities(data)
+                localDataSource.insertUserData(dataList)
+            }
+
+            override fun shouldFetch(data: List<UserData>?): Boolean {
+                return data.isNullOrEmpty()
+            }
         }.asFlow()
 
 }
