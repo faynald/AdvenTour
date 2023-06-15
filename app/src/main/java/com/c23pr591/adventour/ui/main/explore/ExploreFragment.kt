@@ -1,5 +1,6 @@
 package com.c23pr591.adventour.ui.main.explore
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,6 +12,8 @@ import com.c23pr591.adventour.R
 import com.c23pr591.adventour.core.data.Resource
 import com.c23pr591.adventour.core.data.local.DataDummy
 import com.c23pr591.adventour.databinding.FragmentExploreBinding
+import com.c23pr591.adventour.ui.auth.AuthActivity
+import com.c23pr591.adventour.ui.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,6 +34,29 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
         if (activity != null) {
             setupRecyclerView()
             setupObserver()
+            viewModel.getToken().observe(viewLifecycleOwner) { userLogin ->
+                if (userLogin.isNotEmpty()) {
+                    Log.e("getToken() userLogin.isNotEmpty", userLogin.toString())
+                    viewModel.getRecommendation(userLogin[0].token).observe(viewLifecycleOwner) { gunung ->
+                        if (gunung != null) {
+                            when (gunung) {
+                                is Resource.Loading -> {
+                                    Log.e("ExploreFragment", "getRecommendation() Loading . . .")
+                                }
+                                is Resource.Success -> {
+                                    recommendationListAdapter.submitList(gunung.data)
+                                }
+                                is Resource.Error -> {
+                                    Log.e("ExploreFragment", "getRecommendation() Error")
+                                }
+                            }
+                        }
+
+                    }
+                } else {
+                    Log.e("getToken() userLogin.isEmpty", userLogin.toString())
+                }
+            }
         }
     }
 
@@ -44,7 +70,6 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
                         Log.e("ExploreFragment", "getAllGunung() Loading . . .")
                     }
                     is Resource.Success -> {
-                        recommendationListAdapter.submitList(gunung.data)
                         popularListAdapter.submitList(gunung.data)
                     }
                     is Resource.Error -> {

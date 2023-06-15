@@ -18,6 +18,7 @@ import com.c23pr591.adventour.core.utils.GunungJawaBaratMapper
 import com.c23pr591.adventour.core.utils.GunungJawaTengahMapper
 import com.c23pr591.adventour.core.utils.GunungJawaTimurMapper
 import com.c23pr591.adventour.core.utils.GunungMapper
+import com.c23pr591.adventour.core.utils.RecommendationMapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
@@ -166,5 +167,27 @@ class AppRepository @Inject constructor(
 
     fun getTokem() =
         localDataSource.getToken()
+
+    fun getRecommendation(token: String): Flow<Resource<List<Gunung>>> =
+        object : NetworkBoundResource<List<Gunung>, List<GunungListResponse>>() {
+            override fun loadFromDB(): Flow<List<Gunung>> =
+                localDataSource.getRecommendation().map {
+                    RecommendationMapper.mapEntitiesToDomain(it)
+                }
+
+            override suspend fun createCall(): Flow<ApiResponse<List<GunungListResponse>>> =
+                networkDataSource.getRecommendation(token)
+
+            override suspend fun saveCallResult(data: List<GunungListResponse>) {
+                val gunungList = RecommendationMapper.mapResponsesToEntities(data)
+                localDataSource.insertRecommendation(gunungList)
+            }
+
+            override fun shouldFetch(data: List<Gunung>?): Boolean {
+                return data.isNullOrEmpty()
+//                TODO("if phone has internet connection, fetch from API")
+            }
+
+        }.asFlow()
 
 }

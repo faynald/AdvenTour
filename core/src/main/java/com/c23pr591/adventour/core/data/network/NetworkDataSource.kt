@@ -144,4 +144,21 @@ class NetworkDataSource @Inject constructor(private val apiService: ApiService) 
         apiService.signIn(user)
     }
 
+    suspend fun getRecommendation(token: String): Flow<ApiResponse<List<GunungListResponse>>> {
+        return flow {
+            try {
+                val response = apiService.getRecommendation(token)
+                val data = response.data
+                if (data.isNotEmpty()) {
+                    emit(ApiResponse.Success(response.data))
+                } else {
+                    emit(ApiResponse.Empty)
+                }
+            } catch (e: Exception) {
+                emit(ApiResponse.Error(e.toString()))
+                Log.e("RemoteDataSource gerRecommendation", e.toString())
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
 }

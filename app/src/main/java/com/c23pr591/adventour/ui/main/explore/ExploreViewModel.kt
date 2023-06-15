@@ -16,4 +16,8 @@ class ExploreViewModel @Inject constructor(private val repository: AppRepository
     fun getAllGunungJawaTengah() = repository.getGunungJawaTengahList().asLiveData()
 
     fun getAllGunungJawaTimur() = repository.getGunungJawaTimurList().asLiveData()
+
+    fun getRecommendation(token: String) = repository.getRecommendation(token).asLiveData()
+
+    fun getToken() = repository.getTokem().asLiveData()
 }

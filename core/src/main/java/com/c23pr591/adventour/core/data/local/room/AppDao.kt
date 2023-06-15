@@ -9,6 +9,7 @@ import com.c23pr591.adventour.core.data.local.entity.GunungEntity
 import com.c23pr591.adventour.core.data.local.entity.GunungJawaBaratEntity
 import com.c23pr591.adventour.core.data.local.entity.GunungJawaTengahEntity
 import com.c23pr591.adventour.core.data.local.entity.GunungJawaTimurEntity
+import com.c23pr591.adventour.core.data.local.entity.GunungRecommendationEntity
 import com.c23pr591.adventour.core.data.local.entity.UserLoginEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -56,6 +57,13 @@ interface AppDao {
 
     @Query("SELECT * FROM user_login WHERE id = 1")
     fun getToken(): Flow<List<UserLoginEntity>>
+
+    // Recommendation
+    @Query("SELECT * FROM gunung_recommendation_entity")
+    fun getRecommendation(): Flow<List<GunungRecommendationEntity>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertRecommendation(gunungList: List<GunungRecommendationEntity>)
 
 
 }
