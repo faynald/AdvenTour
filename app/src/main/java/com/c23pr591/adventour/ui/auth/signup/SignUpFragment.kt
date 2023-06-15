@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.c23pr591.adventour.R
@@ -54,7 +55,18 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
                 password = password,
                 confirmPassword = confirmPassword
             )
-            viewModel.signUp(user)
+            viewModel.signUp(user) {
+                if (it?.message == "Success SignUp") {
+                    val fragment = LoginFragment()
+                    parentFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.nav_host_fragment, fragment)
+                        .commit()
+                    Toast.makeText(context, it.message.toString(), Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(context, "Terjadi kesalahan, harap periksa data anda", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 

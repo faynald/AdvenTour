@@ -1,11 +1,15 @@
 package com.c23pr591.adventour.core.data
 
 import com.c23pr591.adventour.core.data.local.LocalDataSource
+import com.c23pr591.adventour.core.data.local.entity.UserLoginEntity
 import com.c23pr591.adventour.core.data.network.ApiResponse
 import com.c23pr591.adventour.core.data.network.NetworkDataSource
+import com.c23pr591.adventour.core.data.network.request.SigninRequest
 import com.c23pr591.adventour.core.data.network.request.SignupRequest
 import com.c23pr591.adventour.core.data.network.response.FeedbackItemResponse
 import com.c23pr591.adventour.core.data.network.response.GunungListResponse
+import com.c23pr591.adventour.core.data.network.response.SignUpResponse
+import com.c23pr591.adventour.core.data.network.response.SigninResponse
 import com.c23pr591.adventour.core.domain.model.FeedbackItem
 import com.c23pr591.adventour.core.domain.model.Gunung
 import com.c23pr591.adventour.core.domain.repository.IAppRepository
@@ -15,6 +19,7 @@ import com.c23pr591.adventour.core.utils.GunungJawaTengahMapper
 import com.c23pr591.adventour.core.utils.GunungJawaTimurMapper
 import com.c23pr591.adventour.core.utils.GunungMapper
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -145,8 +150,21 @@ class AppRepository @Inject constructor(
         appExecutors.diskIO().execute { localDataSource.updateFavorite(gunungId, newState) }
     }
 
-    fun signUpUser(user: SignupRequest) {
-        networkDataSource.signUp(user)
+    fun signUpUser(user: SignupRequest, result: (response: SignUpResponse?) -> Unit) {
+        networkDataSource.signUp(user) {
+            result(it)
+        }
     }
+
+    fun signInUser(user: SigninRequest, result: (response: SigninResponse) -> Unit) {
+        networkDataSource.signIn(user) {
+            result(it)
+        }
+    }
+
+    suspend fun saveUser(user: List<UserLoginEntity>) = localDataSource.insertUser(user)
+
+    fun getTokem() =
+        localDataSource.getToken()
 
 }

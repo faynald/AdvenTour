@@ -3,17 +3,21 @@ package com.c23pr591.adventour.ui.splash
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import androidx.activity.viewModels
 import com.c23pr591.adventour.R
 import com.c23pr591.adventour.databinding.ActivitySplashBinding
 import com.c23pr591.adventour.ui.auth.AuthActivity
+import com.c23pr591.adventour.ui.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySplashBinding
+    private val viewModel: SplashViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,9 +45,20 @@ class SplashActivity : AppCompatActivity() {
             }
 
             override fun onAnimationEnd(animation: Animation?) {
-                val intent = Intent(this@SplashActivity, AuthActivity::class.java)
-                startActivity(intent)
-                finish()
+                viewModel.getToken().observe(this@SplashActivity) { userLogin ->
+                    if (userLogin.isNotEmpty()) {
+                        Log.e("userLogin.isNotEmpty", userLogin.toString())
+                        val intent = Intent(this@SplashActivity, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        Log.e("userLogin.isEmpty", userLogin.toString())
+                        val intent = Intent(this@SplashActivity, AuthActivity::class.java)
+                        startActivity(intent)
+                        finish()
+//                        viewModel.insertNullToken()
+                    }
+                }
             }
 
             override fun onAnimationRepeat(animation: Animation?) {

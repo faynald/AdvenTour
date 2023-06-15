@@ -9,6 +9,7 @@ import com.c23pr591.adventour.core.data.local.entity.GunungEntity
 import com.c23pr591.adventour.core.data.local.entity.GunungJawaBaratEntity
 import com.c23pr591.adventour.core.data.local.entity.GunungJawaTengahEntity
 import com.c23pr591.adventour.core.data.local.entity.GunungJawaTimurEntity
+import com.c23pr591.adventour.core.data.local.entity.UserLoginEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -48,6 +49,13 @@ interface AppDao {
 
     @Query("UPDATE gunung_entity SET is_favorite = :newState WHERE id = :gunungId")
     fun updateFavorite(gunungId: Int, newState: Boolean)
+
+    // Authentication
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertUser(data: List<UserLoginEntity>)
+
+    @Query("SELECT * FROM user_login WHERE id = 1")
+    fun getToken(): Flow<List<UserLoginEntity>>
 
 
 }

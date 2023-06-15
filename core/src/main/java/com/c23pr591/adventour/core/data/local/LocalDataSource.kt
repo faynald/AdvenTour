@@ -5,6 +5,7 @@ import com.c23pr591.adventour.core.data.local.entity.GunungEntity
 import com.c23pr591.adventour.core.data.local.entity.GunungJawaBaratEntity
 import com.c23pr591.adventour.core.data.local.entity.GunungJawaTengahEntity
 import com.c23pr591.adventour.core.data.local.entity.GunungJawaTimurEntity
+import com.c23pr591.adventour.core.data.local.entity.UserLoginEntity
 import com.c23pr591.adventour.core.data.local.room.AppDao
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -35,4 +36,8 @@ class LocalDataSource @Inject constructor(private val dao: AppDao) {
     fun getAllFavorite() = dao.getAllFavorite()
     
     fun updateFavorite(gunungId: Int, newState: Boolean) = dao.updateFavorite(gunungId, newState)
+
+    suspend fun insertUser(data: List<UserLoginEntity>) = dao.insertUser(data)
+
+    fun getToken() = dao.getToken()
 }

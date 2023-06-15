@@ -1,10 +1,12 @@
 package com.c23pr591.adventour.core.data.network
 
 import android.util.Log
+import com.c23pr591.adventour.core.data.network.request.SigninRequest
 import com.c23pr591.adventour.core.data.network.request.SignupRequest
 import com.c23pr591.adventour.core.data.network.response.FeedbackItemResponse
 import com.c23pr591.adventour.core.data.network.response.GunungListResponse
 import com.c23pr591.adventour.core.data.network.response.SignUpResponse
+import com.c23pr591.adventour.core.data.network.response.SigninResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -106,7 +108,7 @@ class NetworkDataSource @Inject constructor(private val apiService: ApiService) 
         }.flowOn(Dispatchers.IO)
     }
 
-    fun signUp(user: SignupRequest) {
+    fun signUp(user: SignupRequest, result: (response: SignUpResponse?) -> Unit) {
         val call: Call<SignUpResponse> = apiService.signUp(user)
         call.enqueue(object : Callback<SignUpResponse> {
             override fun onResponse(
@@ -114,6 +116,7 @@ class NetworkDataSource @Inject constructor(private val apiService: ApiService) 
                 response: Response<SignUpResponse>
             ) {
                 Log.e("RemoteDataSource signUp Success", response.code().toString())
+                result(response.body())
             }
 
             override fun onFailure(call: Call<SignUpResponse>, t: Throwable) {
@@ -121,6 +124,24 @@ class NetworkDataSource @Inject constructor(private val apiService: ApiService) 
             }
         })
         apiService.signUp(user)
+    }
+
+    fun signIn(user: SigninRequest, result: (response: SigninResponse) -> Unit) {
+        val call: Call<SigninResponse> = apiService.signIn(user)
+        call.enqueue(object : Callback<SigninResponse> {
+            override fun onResponse(
+                call: Call<SigninResponse>,
+                response: Response<SigninResponse>
+            ) {
+                Log.e("RemoteDataSource signUp Success", response.code().toString())
+                response.body()?.let { result(it) }
+            }
+
+            override fun onFailure(call: Call<SigninResponse>, t: Throwable) {
+                Log.e("RemoteDataSource signUp", "Error$t")
+            }
+        })
+        apiService.signIn(user)
     }
 
 }
