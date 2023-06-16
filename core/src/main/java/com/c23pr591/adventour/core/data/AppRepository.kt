@@ -172,6 +172,9 @@ class AppRepository @Inject constructor(
     fun getTokem() =
         localDataSource.getToken()
 
+    suspend fun deleteToken(user: UserLoginEntity) =
+        localDataSource.deleteUserToken(user)
+
     fun getRecommendation(token: String): Flow<Resource<List<Gunung>>> =
         object : NetworkBoundResource<List<Gunung>, List<GunungListResponse>>() {
             override fun loadFromDB(): Flow<List<Gunung>> =

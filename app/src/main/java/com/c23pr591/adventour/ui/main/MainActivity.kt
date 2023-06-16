@@ -14,7 +14,7 @@ import com.c23pr591.adventour.ui.auth.AuthActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SettingCallback {
 
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModels()
@@ -43,5 +43,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    override fun logout() {
+        finish()
     }
 }

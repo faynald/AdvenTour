@@ -1,6 +1,7 @@
 package com.c23pr591.adventour.core.data.local.room
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -58,6 +59,9 @@ interface AppDao {
 
     @Query("SELECT * FROM user_login WHERE id = 1")
     fun getToken(): Flow<List<UserLoginEntity>>
+
+    @Delete
+    suspend fun deleteUserToken(user: UserLoginEntity)
 
     // Recommendation
     @Query("SELECT * FROM gunung_recommendation_entity")

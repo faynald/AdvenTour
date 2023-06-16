@@ -43,6 +43,8 @@ class LocalDataSource @Inject constructor(private val dao: AppDao) {
 
     fun getToken() = dao.getToken()
 
+    suspend fun deleteUserToken(token: UserLoginEntity) = dao.deleteUserToken(token)
+
     fun getRecommendation(): Flow<List<GunungRecommendationEntity>> = dao.getRecommendation()
 
     suspend fun insertRecommendation(gunung: List<GunungRecommendationEntity>) = dao.insertRecommendation(gunung)
