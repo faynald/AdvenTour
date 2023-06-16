@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.activity.viewModels
@@ -27,24 +28,24 @@ class SplashActivity : AppCompatActivity() {
 
         val logoAnimation = AnimationUtils.loadAnimation(this, R.anim.splash_logo_animation)
         val textAnimation = AnimationUtils.loadAnimation(this, R.anim.splash_text_fade_in)
-        binding.logo.startAnimation(logoAnimation)
         logoAnimation.setAnimationListener(object : Animation.AnimationListener{
             override fun onAnimationStart(animation: Animation?) {
             }
 
             override fun onAnimationEnd(animation: Animation?) {
-                binding.linearText.startAnimation(textAnimation)
             }
 
             override fun onAnimationRepeat(animation: Animation?) {
             }
         })
+        binding.linear.startAnimation(textAnimation)
 
         textAnimation.setAnimationListener(object : Animation.AnimationListener{
             override fun onAnimationStart(animation: Animation?) {
             }
 
             override fun onAnimationEnd(animation: Animation?) {
+                binding.linearText.visibility = View.VISIBLE
                 viewModel.getToken().observe(this@SplashActivity) { userLogin ->
                     if (userLogin.isNotEmpty()) {
                         Log.e("userLogin.isNotEmpty", userLogin.toString())
