@@ -303,14 +303,78 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
+                android:paddingEnd="24dp"
                 android:layout_marginTop="63dp"
-                android:textSize="16sp"
-                android:fontFamily="@font/nunito_semibold"
-                android:text="Reviews" />
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text="Reviews" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/button_tambah_review"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    app:shapeAppearanceOverlay="@style/circularImageView"
+                    android:background="#D8D8D8"
+                    android:layout_gravity="end"
+                    android:src="@drawable/ic_add" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/layout_tambah_review"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp"
+                android:paddingHorizontal="24dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_review"
+                        android:hint="Tulis review"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="42dp"
+                    android:numStars="5"
+                    android:rating="0"
+                    android:layout_marginTop="16dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="16dp"/>
+
+                <Button
+                    android:id="@+id/buttonSubmit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Submit"
+                    android:layout_gravity="center_horizontal"/>
+
+            </LinearLayout>
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view"

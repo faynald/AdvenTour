@@ -4,6 +4,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.viewModels
 import com.bumptech.glide.Glide
 import com.c23pr591.adventour.R
@@ -94,6 +95,19 @@ class DetailActivity : AppCompatActivity() {
     private fun setupOnClick() {
         binding.buttonBack.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
+        }
+        binding.buttonTambahReview.setOnClickListener {
+            if (binding.layoutTambahReview.visibility == View.VISIBLE) {
+                binding.layoutTambahReview.visibility = View.GONE
+                Glide.with(this@DetailActivity)
+                    .load(R.drawable.ic_close)
+                    .into(binding.buttonTambahReview)
+            } else {
+                binding.layoutTambahReview.visibility = View.VISIBLE
+                Glide.with(this@DetailActivity)
+                    .load(R.drawable.ic_add)
+                    .into(binding.buttonTambahReview)
+            }
         }
 
     }
