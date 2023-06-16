@@ -69,10 +69,10 @@ class DetailActivity : AppCompatActivity() {
             tvGunungLocation.text = gunung.lokasi
             tvGunungRating.text = gunung.rating.toString()
             tvDetailDearah.text = gunung.daerah
-            tvDetailMdpl.text = gunung.ketinggian.toString()
+            tvDetailMdpl.text = "${gunung.ketinggian.toString()}\nmdpl"
             tvDetailTrek.text = gunung.trek
             tvDetailJalur.text = gunung.jalur
-            tvDetailBiaya.text = gunung.simaksi.toString()
+            tvDetailBiaya.text = "Rp ${gunung.simaksi.toString()}"
             var statusFavorite = gunung.isFavorite == true
             setStatusFavorite(statusFavorite)
             buttonWhistlist.setOnClickListener {
