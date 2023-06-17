@@ -100,12 +100,12 @@ class DetailActivity : AppCompatActivity() {
             if (binding.layoutTambahReview.visibility == View.VISIBLE) {
                 binding.layoutTambahReview.visibility = View.GONE
                 Glide.with(this@DetailActivity)
-                    .load(R.drawable.ic_close)
+                    .load(R.drawable.ic_add)
                     .into(binding.buttonTambahReview)
             } else {
                 binding.layoutTambahReview.visibility = View.VISIBLE
                 Glide.with(this@DetailActivity)
-                    .load(R.drawable.ic_add)
+                    .load(R.drawable.ic_close)
                     .into(binding.buttonTambahReview)
             }
         }
