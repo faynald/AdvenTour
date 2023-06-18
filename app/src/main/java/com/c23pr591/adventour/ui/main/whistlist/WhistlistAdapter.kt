@@ -32,7 +32,7 @@ class WhistlistAdapter : ListAdapter<Gunung, WhistlistAdapter.ItemViewholder>(Di
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Gunung) = with(binding) {
             Glide.with(itemView.context)
-                .load("https://upload.wikimedia.org/wikipedia/commons/1/12/Semeru.jpg")
+                .load(item.imageUrl)
                 .into(imgGunung)
             tvGunungName.text = item.nama
             tvLokasi.text = item.lokasi

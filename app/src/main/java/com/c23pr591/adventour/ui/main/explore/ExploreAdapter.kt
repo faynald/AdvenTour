@@ -31,7 +31,7 @@ class ExploreAdapter : ListAdapter<Gunung, ExploreAdapter.ItemViewholder>(DiffCa
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Gunung) = with(binding) {
             Glide.with(itemView)
-                .load("https://upload.wikimedia.org/wikipedia/commons/1/12/Semeru.jpg")
+                .load(item.imageUrl)
                 .into(itemImg)
             itemLocation.text = item.lokasi
             itemName.text = item.nama
