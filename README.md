@@ -12,3 +12,14 @@
 |  5  |  C172DSX2693  |  Mahdy Mubasyir              | Cloud Computing    |
 |  6  |  A366DKX4272  |  Farhan Reynaldi Valerian    | Mobile Development |
 
+## Overview
+AdvenTour is an app that offers users hiking destinations based on a recommendation system. This app is built using MVVM, Clean Architecture, Coroutines, Network Caching, Hilt Dependency Injection, Retrofit, and Room Database. This app is a capstone project as one of the graduation requirements for Bangkit Academy 2023 Batch 1.
+
+## Features
+- Authentication
+- Display hiking destination lists
+- Display lists based on recommendation system
+- Review hiking destination
+- Profile
+
+## Preview
