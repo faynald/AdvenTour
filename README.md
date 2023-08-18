@@ -23,3 +23,4 @@ AdvenTour is an app that offers users hiking destinations based on a recommendat
 - Profile
 
 ## Preview
+<img src="https://github.com/faynald/AdvenTour/blob/main/preview.png" style="max-width:100%">
